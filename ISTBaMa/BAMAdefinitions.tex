@@ -1,0 +1,61 @@
+
+\titlehead{\theTypeOfTheThesis~IST-\theNumberOfTheThesis \hfill \raisebox{-4mm}{\includegraphics[height=12mm]{ist_logo}}}
+
+% -----------------------------------------------------------------
+
+\title{\vspace*{1em}\theTitleOfTheThesis}
+\author{\theNameOfTheStudent \\[2em] 
+\CourseOfStudyString: \theCourseOfStudy\\[1em]}
+
+\date{\today\\[1em]} % the submission date
+
+\publishers{
+  \begin{tabular}{rl}
+    \ExaminerString:   & {\theNameOfTheExaminer}\\[.25em]
+    \SupervisorString: & {\theNameOfTheFirstSupervisor}\\
+                       & {\theNameOfTheSecondSupervisor}\\
+                       & {\theNameOfTheThirdSupervisor}\\
+  \end{tabular}\\[5em]
+  \ISTString\\
+  \UniStuttgartString\\[.25em]
+  \HeadString} 
+% List your advisors and examinors here
+
+% -----------------------------------------------------------------
+
+\newcommand{\makeTitlePage}{%
+\pagestyle{empty}
+\KOMAoptions{twoside=false} % because we use the titlepage as the coverpage
+\recalctypearea
+\maketitle
+\KOMAoptions{twoside=true} % and we switch back to twosided print
+\recalctypearea
+}
+
+% -----------------------------------------------------------------
+
+\newcommand{\theDeclaration}{%
+\chapter*{Eigenst\"{a}ndigkeitserkl\"{a}rung}%
+%\selectlanguage{ngerman}%
+  Ich versichere hiermit, dass ich, \theNameOfTheStudent{}, die vorliegende
+  Arbeit selbstst\"{a}ndig angefertigt, keine anderen als die
+  an\-ge\-ge\-benen Hilfsmittel benutzt und sowohl w\"{o}rtliche, als auch
+  sinngem\"{a}{\ss} entlehnte Stellen als solche kenntlich gemacht
+  habe. Die Arbeit hat in gleicher oder \"{a}hnlicher Form noch keiner
+  anderen Pr\"{u}fungsbeh\"{o}rde vorgelegen. Weiterhin best\"{a}tige ich, 
+  dass das elektronische Exemplar mit den anderen Exemplaren 
+  \"{u}bereinstimmt.\\[3em]
+\noindent{}
+\rule{0.39\textwidth}{0.4pt} \hspace{1.9cm} 
+\rule{0.39\textwidth}{0.4pt}
+\newline
+\noindent{}Ort, Datum  \hspace{4.3cm} Unterschrift
+}
+
+% template settings; makes things look nice, from a certain point of
+% view.
+%\flushbottom
+\frenchspacing
+\setcapindent{0em}
+\addtokomafont{captionlabel}{\bfseries}
+

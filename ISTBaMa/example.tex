@@ -1,0 +1,77 @@
+% the preamble contains general-purpose packages. Normally, you don't
+% need to touch this file 
+\input BAMApreamble.tex
+
+% in this file you have to set your personal data: name, title of the
+% thesis, etc.
+\input BAMAsettings.tex
+
+% in this file some optional packages are loaded. Add what you need,
+% and please do not forget to remove what you are not going to use.
+\input BAMApackages.tex
+
+% language-dependent definitions. Include either BAMAlang.EN.tex or
+% BAMAlang.DE.tex (yes, you are right, I know that, there are much
+% more elegant solutions).
+\input BAMAlang.EN.tex
+
+% Some further definitions (title page, etc.). Hopefully, you don't
+% need to touch it.
+\input BAMAdefinitions.tex
+
+% just to fill this template with some dummy text. Remove it. 
+\usepackage{lipsum}
+
+% --------------------------------------------------------------------
+\begin{document}
+\makeTitlePage
+\newpage
+\pagestyle{headings}
+\pagenumbering{roman} % <-- roman page numbers for the front matter
+\chapter*{Abstract}   % <-- not included in the table of contents 
+\lipsum[1]
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+
+% --------------------------------------------------------------------
+\pagenumbering{arabic} % normal page numbering starts here
+\chapter{Introduction}
+\section{Motivation}
+\lipsum[1-4]
+\section{State of the work}
+\lipsum[5-8]
+\section{Goals}
+\lipsum[9]
+
+
+\chapter{Brilliant Idea}
+\lipsum[10-15]
+
+\chapter{Implementation Issues}
+\section{Nulla iaculis}
+\lipsum[16-20]
+\section{Mauris libero ee}
+\lipsum[21-30]
+\section{Class aptent taciti}
+\lipsum[31-35]
+
+\chapter{Experimental Confirmations}
+\lipsum[36-39]
+
+\chapter{Summary and Outlook}
+\lipsum
+
+\appendix
+
+\chapter{Proof of Theorem 1}
+\lipsum[1-2]
+
+\chapter{Proof of Theorem 2}
+\lipsum[3-5]
+
+\theDeclaration
+
+% \bibliographystyle{plain}
+% \bibliography{mybibtexfile}
+\end{document}

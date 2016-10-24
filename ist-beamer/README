@@ -1,0 +1,51 @@
+This file explains how to use the IST layout style for latex-beamer presentations.
+
+Check if you can directly use ist-beamer: Enter the command 'kpsewhich beamerthemeiststyle.sty',
+and if you get an output, you can probably directly use the IST style with latex-beamer.
+
+Otherwise, an easy way to get access to all packages required for ist-beamer is to create
+a symbolic link to /home/ist/TeX/tex/ in your local texmf directory:
+ln -s /home/ist/TeX/tex/ ~/texmf/ist-packages
+mktexlsr 
+
+After that, 'kpsewhich beamerthemeiststyle.sty' should give the output
+/home/ist/TeX/tex/ist-beamer/beamerthemeiststyle.sty
+
+Then, you are ready to create your presentation with latex-beamer as usual. As a starting
+point, you can e.g. use the example provided in the ist-beamer directory.
+
+Converting from DVI to PDF:
+Usually, you want your presentation as PDF file. For some TeX-Installations (like the one
+on the computer at IST that I mostly use), the usual way via dvips and ps2pdf does not
+really work. Therefore, I added the shell script convert_to_pdf.sh. If your DVI file has
+the name mytalk.dvi, than calling 'convert_to_pdf.sh mytalk' in your working directory creates 
+the presentation file as mytalk.pdf. I hope either the usual way or this script work on all
+computers at IST.
+
+-- 
+2007-02-25, sw
+
+NEWS & CHANGES
+
+2007-07-11
+If you do not like the navigation symbols inserted near the footline of every slide, just
+use the command
+\setbeamertemplate{navigation symbols}{}
+somewhere in the preamble of the Latex document.
+
+2008-06-27
+A reasonable default footline is created by using the command
+\setbeamertemplate{footlinetext}[shorttitle]
+somewhere in the preamble of the Latex document.
+
+Frame numbers can be shown in the foot line, either by using the command
+\setbeamertemplate{framenumber}[show]
+for showing the current frame number on each slide, or with
+\setbeamertemplate{framenumber}[showtotal]
+for showing also the total frame number.
+The first frame (usually the title page) is not counted, and no numbers are displayed on it.
+By default, no frame numbers are shown.
+
+The footline text is no longer shown on the first slide. I wanted to remove the logo too, but
+this created problems with positioning the footline correctly on further slides, so the
+logo is now still shown on the first slide.

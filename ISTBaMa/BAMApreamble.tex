@@ -1,0 +1,55 @@
+\documentclass[paper=a5,headsepline=true,9pt,DIV=12,BCOR=1.2cm]{scrbook}
+%
+% explanation of options: the final version of the thesis is to be
+% printed on a5 paper. It can also be printed on a4 paper using the
+% «booklet» option. The advantage is, that the thesis will look on
+% screen exactly as it will on paper. The thesis can also be printed
+% on a5 printers in the copy shop of your liking.
+%
+% BCOR is the binding margin correction, it will increase the inner
+% margin, so that binding can be done. No other geometry information
+% is required.
+%
+% Our current IST binding procedure does not consume the inner margin
+% much, so it appears that BCOR should be of size 0. But you might
+% want to set it to a nonzero value if you prefer to gently open the
+% booklet and not damage the back.
+
+\usepackage{typearea}           % recalculates the type area using the BCOR
+                                % argument
+
+\usepackage[utf8]{inputenc}     % text encoding in this file change to
+                                % latin1 if you prefer that
+
+
+\usepackage[sc,osf]{mathpazo}   % the default font used in this
+                                % manuscript (a bit thicker than
+                                % lmodern), comment this package out
+                                % if you want the default font
+
+\usepackage{graphicx}           % to include graphics (pdflatex
+                                % includes: png,pdf,jpg and more, but
+                                % not eps! [nor ps])
+\usepackage{amsmath,amssymb}    % math packages, e.g. for align and pmatrix environments
+
+\usepackage[usenames]{xcolor}   % you might consider using the dvipsnames option for more colors
+
+% some color definitions
+\colorlet{lcolor}{blue!40!black}
+\colorlet{ucolor}{magenta!40!black}
+\colorlet{ccolor}{green!40!black}
+
+\usepackage[colorlinks=true,%
+            linkcolor=lcolor,%
+            urlcolor=ucolor,%
+            citecolor=ccolor]{hyperref} % makes references clickable
+            % links will be in specified colors. You may set them to
+            % black for final printing.
+
+
+\usepackage{tikz}               % graphics inside latex; very powerful
+
+\usepackage{microtype} %typographic enhancements
+
+\pagestyle{headings}
+

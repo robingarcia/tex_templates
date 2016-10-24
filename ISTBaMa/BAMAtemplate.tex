@@ -1,0 +1,47 @@
+% the preamble contains general-purpose packages. Normally, you don't
+% need to touch this file 
+\input BAMApreamble.tex
+
+% in this file you have to set your personal data: name, title of the
+% thesis, etc.
+\input BAMAsettings.tex
+
+% in this file some optional packages are loaded. Add what you need,
+% and please do not forget to remove what you are not going to use.
+\input BAMApackages.tex
+
+% language-dependent definitions. Include either BAMAlang.EN.tex or
+% BAMAlang.DE.tex (yes, you are right, I know that, there are much
+% more elegant solutions).
+\input BAMAlang.EN.tex
+
+% Some further definitions (title page, etc.). Hopefully, you don't
+% need to touch it.
+\input BAMAdefinitions.tex
+
+% --------------------------------------------------------------------
+\begin{document}
+\makeTitlePage
+\newpage
+\pagestyle{headings}
+\pagenumbering{roman} % <-- roman page numbers for the front matter
+\chapter*{Abstract}   % <-- not included in the table of contents 
+please add your text
+
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+
+% --------------------------------------------------------------------
+\pagenumbering{arabic} % normal page numbering starts here
+\chapter{Introduction}
+
+please add your text 
+
+
+
+\theDeclaration
+
+% \bibliographystyle{plain}
+% \bibliography{mybibtexfile}
+\end{document}

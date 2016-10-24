@@ -1,0 +1,186 @@
+% Style file for presentations in IST layout using latex-beamer
+% 2006-12-03, Steffen Waldherr
+% updated 2008-06-27, Steffen Waldherr
+
+\RequirePackage{tikz}
+\RequirePackage{calc}
+\RequirePackage{ifthen}
+
+\mode<presentation>
+
+% font
+\setbeamerfont{footlinetext}{size=\tiny}
+
+% color
+\definecolor{beamer@istblue}{rgb}{0,0,1} % use structure theme to change
+\setbeamercolor{structure}{fg=beamer@istblue}
+
+\setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
+\setbeamercolor{block title alerted}{use=alerted text,fg=alerted text.fg!10!normal text.fg,bg=yellow}
+\setbeamercolor{block title example}{use=example text,fg=example text.fg,bg=example text.fg!20!bg}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!30!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
+
+\setbeamercolor{titlelike}{parent=normal text}
+\setbeamercolor{subtitle}{parent=title}
+\setbeamercolor{author}{parent=structure}
+\setbeamercolor{institute}{parent=structure}
+\setbeamercolor{date}{parent=structure}
+\setbeamercolor{frametitle}{parent=normal text}
+
+\setbeamercolor{footlinetext}{use=structure,fg=structure.fg!70!bg}
+
+\useinnertheme{rounded}
+
+% changes to inner theme: title frame
+\setbeamertemplate{title page}{
+  \vbox{}
+  \vskip -30pt
+  \usebeamercolor[fg]{structure}%
+  \@tempdima=\textwidth
+  \advance \@tempdima by \beamer@rightmargin
+  \advance \@tempdima by -0.5ex
+  \begin{pgfpicture}
+    \pgfpathmoveto{\pgforigin}
+    \pgfpathlineto{\pgfpoint{\@tempdima}{37pt}}
+    \pgfusepath{use as bounding box}
+    \pgfpathmoveto{\pgfpoint{0.2\@tempdima}{10pt}}
+    \pgfpathlineto{\pgfpoint{\@tempdima-6pt}{10pt}}
+    \pgfpathlineto{\pgfpoint{\@tempdima-6pt}{30pt}}
+    \pgfsetlinewidth{0.75pt}
+    \pgfusepath{stroke}
+%     \pgfdeclareimage[height=16pt]{circle}{logo_circle}
+    \pgfdeclareimage[height=14pt]{uni}{logo_uni}
+    \pgfdeclareimage[height=20pt]{letters}{logo_letters}
+%     \pgftext[at=\pgfpoint{\textwidth+\beamer@rightmargin}{36pt},right,top]{\pgfuseimage{circle}}
+    \pgftext[at=\pgfpoint{\textwidth+\beamer@rightmargin-16pt}{32pt},right,top]{\pgfuseimage{letters}}
+    \pgftext[at=\pgfpoint{\textwidth+\beamer@rightmargin-50pt}{3pt},right,base]{\pgfuseimage{uni}}
+	\pgfpathcircle{\pgfpoint{\@tempdima-6pt}{28pt}}{8pt}
+	\pgfusepath{fill}
+	\pgfseteorule
+	\pgfsetfillcolor{white}
+	\pgfsetlinewidth{0pt}
+	\pgfpathmoveto{\pgfpoint{\@tempdima-6pt}{36pt-0.5pt}}
+	\pgfpathlineto{\pgfpoint{\@tempdima+0.5pt}{36pt-12pt}}
+	\pgfpathlineto{\pgfpoint{\@tempdima-12.5pt}{36pt-12pt}}
+	\pgfpathclose
+	\pgfusepath{fill}
+  \end{pgfpicture}
+  \vfill
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center,]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \end{centering}
+  \vfill
+}
+
+\newcommand{\footlinetext}[1]{\setbeamertemplate{footlinetext}{#1}}
+
+\newbox\beameriststyle@titlebox
+\newdimen\beameriststyle@titleboxht
+
+\setbeamertemplate{frametitle}
+{
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \setbox\beameriststyle@titlebox=\vbox{\begin{beamercolorbox}[sep=0.3cm,center,wd=\the\@tempdima]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1ex%
+    \if@tempswa\else\csname beamer@ftecenter\endcsname\fi%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+  \end{beamercolorbox}}%
+\beameriststyle@titleboxht=\ht\beameriststyle@titlebox
+\@tempdima=\textwidth
+\advance \@tempdima by \beamer@rightmargin
+\advance \@tempdima by -0.5ex
+\box\beameriststyle@titlebox
+\vskip -\beameriststyle@titleboxht
+\usebeamercolor[fg]{structure}%
+\begin{pgfpicture}
+\pgfpathmoveto{\pgforigin}
+\pgfpathlineto{\pgfpoint{\@tempdima}{\beameriststyle@titleboxht}}
+\pgfusepath{use as bounding box}
+\pgfpathmoveto{\pgfpoint{0.2\@tempdima}{0cm}}
+\pgfpathlineto{\pgfpoint{\@tempdima-6pt}{0cm}}
+\pgfpathlineto{\pgfpoint{\@tempdima-6pt}{\beameriststyle@titleboxht-8pt}}
+\pgfsetlinewidth{0.75pt}
+\pgfusepath{stroke}
+\pgfpathcircle{\pgfpoint{\@tempdima-6pt}{\beameriststyle@titleboxht-8pt}}{8pt}
+\pgfusepath{fill}
+\pgfseteorule
+\pgfsetfillcolor{white}
+\pgfsetlinewidth{0pt}
+\pgfpathmoveto{\pgfpoint{\@tempdima-6pt}{\beameriststyle@titleboxht-0.5pt}}
+\pgfpathlineto{\pgfpoint{\@tempdima+0.5pt}{\beameriststyle@titleboxht-12pt}}
+\pgfpathlineto{\pgfpoint{\@tempdima-12.5pt}{\beameriststyle@titleboxht-12pt}}
+\pgfpathclose
+\pgfusepath{fill}
+\end{pgfpicture}
+}
+
+\defbeamertemplate*{footlinetext}{empty}{}
+\defbeamertemplate{footlinetext}{shorttitle}{\insertshorttitle, \insertshortauthor}
+
+
+% framenumbers
+\newcounter{realframenumber}
+\newcounter{realtotalframenumber}
+\def\insertrealframenumber{\setcounter{realframenumber}{\c@framenumber-1}\@arabic\c@realframenumber}
+\def\insertrealtotalframenumber{\setcounter{realtotalframenumber}{\inserttotalframenumber-1}\@arabic\c@realtotalframenumber}
+
+\defbeamertemplate*{framenumber}{hide}{}
+\defbeamertemplate{framenumber}{show}
+	{\usebeamerfont{footlinetext}\usebeamercolor[fg]{footlinetext}\insertrealframenumber{}}
+\defbeamertemplate{framenumber}{showtotal}
+	{\usebeamerfont{footlinetext}\usebeamercolor[fg]{footlinetext}\insertrealframenumber{}\,/\,\insertrealtotalframenumber{}}
+
+\pgfdeclareimage[height=12pt]{ist_logo}{logofarbe_blau}
+\setbeamertemplate{footline}
+{
+\usebeamercolor[fg]{structure}
+\begin{pgfpicture}
+\pgfpathmoveto{\pgfpoint{0pt}{13pt}}
+\pgfpathlineto{\pgfpoint{0.7\textwidth}{13pt}}
+\pgfsetlinewidth{0.75pt}
+\pgfusepath{stroke}
+\pgftext[at=\pgfpoint{0pt}{0pt},left,base]{\pgfuseimage{ist_logo}}
+\ifthenelse{\c@framenumber>1}
+{\pgftext[at=\pgfpoint{40pt}{4pt},left,base]{\usebeamertemplate***{footlinetext}}
+\@tempdima=\textwidth
+\advance \@tempdima by -0.5ex
+\pgftext[at=\pgfpoint{\@tempdima-6pt}{4pt},right,base]%
+		{\usebeamertemplate***{framenumber}}}{}
+\end{pgfpicture}
+}
+
+\mode
+<all>

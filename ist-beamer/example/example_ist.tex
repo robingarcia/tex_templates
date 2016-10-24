@@ -1,0 +1,72 @@
+\documentclass[dvips,xcolor=pst]{beamer}
+
+\usetheme{iststyle}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\setbeamercovered{transparent}
+
+
+\title{Beamer Example for IST style}
+\author{Steffen Waldherr}
+\institute{
+  Institute for Systems Theory and Automatic Control\\
+  University of Stuttgart}
+\date{February 2007}
+\footlinetext{Example talk for IST style}
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+\begin{frame}{Using blocks}
+\begin{itemize}
+\item This slide shows the usage of colored blocks.
+
+\begin{block}{Standard block}
+	\begin{itemize}
+		\item Nested item environments become smaller.
+	\end{itemize}
+\end{block}
+	
+\begin{exampleblock}{Example block}
+	\begin{itemize}
+		\item Nested item environments become smaller.
+	\end{itemize}
+\end{exampleblock}
+	
+\begin{alertblock}{Alert block}
+	\begin{itemize}
+		\item Nested item environments become smaller.
+	\end{itemize}
+\end{alertblock}
+
+\begin{block}{}
+	\centering Blocks without titles are also useful. 
+\end{block}
+\end{itemize}
+\end{frame}
+
+\frame{
+  \frametitle{Now this is a frame with a really long title not fitting on one line}
+  
+  Note that ist-beamer breaks the long title line and adjust the blue separating line accordingly.
+}
+
+\begin{frame}{Using transparent overlays}
+\begin{itemize}
+\item Shown on the first slide
+\pause
+\item on the second slide
+
+\begin{block}{}
+Blocks can also be covered transparently.
+\end{block}
+\pause
+\item See the latex-beamer documentation for more information on overlays.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
+
+

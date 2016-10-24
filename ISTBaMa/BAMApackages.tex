@@ -1,0 +1,47 @@
+% optional packages (but nice)
+%
+\usepackage{booktabs} % nice tables: \toprule, \midrule and \bottomrule
+
+\usepackage{varioref} % references with pagenumbers, use \vref{«key»}
+                      % for that; otherwise \ref and \eqref
+
+\usepackage{icomma}   % if you write in german and have to use commas
+                      % in numbers, this package will make everything
+                      % right: 1,2 will not look like that: 1, 2 -
+                      % while f(a, b) will have a small space between
+                      % the function arguments
+
+
+% even more optional packages
+%
+\usepackage{marginnote}         % e.g. for url on the side
+\usepackage{cite}               % improved citation management for
+                                % numerical citations,
+
+\usepackage{listings}           % nicely formated code, see the
+                                % packagae manual, good if you have to
+                                % include programming code examples
+
+\lstset{language=R,basicstyle=\ttfamily,frame=top} % an example
+                                                   % setting for R
+                                                   % code
+
+\usepackage{caption}            % provides \captionof{figure}{...}
+                                % makro (e.g. inside a center
+                                % environement).  this is important
+                                % for captions outside of floats like
+                                % the «figure» environment
+
+% some color definitions
+\colorlet{lcolor}{blue!40!black}
+\colorlet{ucolor}{magenta!40!black}
+\colorlet{ccolor}{green!40!black}
+
+\usepackage[colorlinks=true,%
+            linkcolor=lcolor,%
+            urlcolor=ucolor,%
+            citecolor=ccolor]{hyperref} % makes references clickable
+                                        % links will be in specified
+                                        % colors. You may set them to
+                                        % black for final printing.
+
